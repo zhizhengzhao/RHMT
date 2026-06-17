@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+sim/g4/build/
+*.root
+*.aux
+*.log
+*.out
+sim/work/

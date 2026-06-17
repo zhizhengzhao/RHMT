@@ -1,0 +1,10 @@
+schema: material_schema.yaml
+
+---
+
+G4_CONCRETE: {from: nist}
+
+sample_sio2: {alias: G4_CONCRETE, color: cyan, alpha: 0.1}
+sample_water: {alias: G4_CONCRETE, color: cyan, alpha: 0.1}
+
+---

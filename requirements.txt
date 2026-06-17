@@ -1,0 +1,7 @@
+# RHT — reconstruction + scoring (the quickstart path)
+numpy>=1.21
+torch>=1.12          # CUDA GPU strongly recommended for the voxel inversions
+
+# Regenerating data/ from raw Geant4 output additionally needs:
+#   uproot>=5         # sim/convert.py reads the ROOT files
+#   + a Geant4 + CMake toolchain to build sim/g4

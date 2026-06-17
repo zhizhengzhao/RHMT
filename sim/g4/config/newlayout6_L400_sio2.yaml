@@ -1,0 +1,65 @@
+# 6-layer RPC + two magnetic-field regions (muon spectrometer).
+# Stack (bottom_up, z increasing):
+#   RPC5 - magnet_gap(B_down) - RPC4 - minor - RPC3 - major(sample) - RPC2 - minor - RPC1 - magnet_gap(B_up) - RPC0
+# Inner 4 layers (RPC1..RPC4) bracket the sample -> direction/position.
+# Outer 2 layers (RPC0,RPC5) + magnet gaps -> bending -> momentum.
+# SiO2 variant: the major sample gap is filled with SiO2 (water-in-SiO2), the
+# rest (minor gaps, magnet gaps, world) stay air.
+schema: volume_schema.yaml
+
+---
+
+world_major_gap:
+  alternative: alternative
+  hidden: hidden
+  solid: box
+  x: &newrpc_x 400 mm
+  y: &newrpc_y 400 mm
+  z: 470 mm
+  material: sample_sio2
+
+world_minor_gap:
+  alternative: alternative
+  hidden: hidden
+  solid: box
+  x: *newrpc_x
+  y: *newrpc_y
+  z: 170 mm
+  material: &world_material newrpc_air
+
+magnet_gap:
+  solid: box
+  x: *newrpc_x
+  y: *newrpc_y
+  z: 400 mm
+  material: *world_material
+
+world:
+  alternative: alternative
+  hidden: hidden
+  solid: bottom_up
+  components:
+    - newrpc
+    - magnet_gap
+    - newrpc
+    - world_minor_gap
+    - newrpc
+    - world_major_gap
+    - newrpc
+    - world_minor_gap
+    - newrpc
+    - magnet_gap
+    - newrpc
+  padding: 20%
+  material: *world_material
+
+---
+
+# Comments
+materials:
+  - newrpc_air
+  - sample_sio2
+external:
+  - newrpc
+  - world_major_gap
+  - magnet_gap

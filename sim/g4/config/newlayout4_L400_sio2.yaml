@@ -1,0 +1,52 @@
+# 4-layer RPC scattering tomograph (tier A: no magnets, no momentum).
+# Stack (bottom_up, z increasing):
+#   RPC3 - minor - RPC2 - major(sample) - RPC1 - minor - RPC0
+# Geometry of the four planes and the sample is IDENTICAL to the inner four
+# layers of the 6-layer spectrometer (newlayout6_L400_sio2.yaml).
+# SiO2 variant: the major sample gap is filled with SiO2.
+schema: volume_schema.yaml
+
+---
+
+world_major_gap:
+  alternative: alternative
+  hidden: hidden
+  solid: box
+  x: &newrpc_x 400 mm
+  y: &newrpc_y 400 mm
+  z: 470 mm
+  material: sample_sio2
+
+world_minor_gap:
+  alternative: alternative
+  hidden: hidden
+  solid: box
+  x: *newrpc_x
+  y: *newrpc_y
+  z: 170 mm
+  material: &world_material newrpc_air
+
+world:
+  alternative: alternative
+  hidden: hidden
+  solid: bottom_up
+  components:
+    - newrpc
+    - world_minor_gap
+    - newrpc
+    - world_major_gap
+    - newrpc
+    - world_minor_gap
+    - newrpc
+  padding: 20%
+  material: *world_material
+
+---
+
+# Comments
+materials:
+  - newrpc_air
+  - sample_sio2
+external:
+  - newrpc
+  - world_major_gap
