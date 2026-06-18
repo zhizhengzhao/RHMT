@@ -1,16 +1,16 @@
-# RHMT — Raw-Hit Muon Tomography
+# MDMT — Measurement-Domain Muon Tomography
 
 Cosmic-muon material tomography from the **raw detector hits**. The same hits are
 reconstructed in two channels:
 
 | channel | instrument (tier) | observable | output field |
 |---|---|---|---|
-| **RHMT-S** (scattering) | 4 RPC planes, no magnets (**A**) | spread of the hits about the straight track | radiation length `λ = 1/X₀` |
-| **RHMT-E** (energy) | 6 RPC planes + 2×3 T magnets (**B**) | momentum loss from the magnetic bend (Bethe–Bloch line integral) | stopping power `s = ρZ/A` |
+| **MDMT-S** (scattering) | 4 RPC planes, no magnets (**A**) | spread of the hits about the straight track | radiation length `λ = 1/X₀` |
+| **MDMT-E** (energy) | 6 RPC planes + 2×3 T magnets (**B**) | momentum loss from the magnetic bend (Bethe–Bloch line integral) | stopping power `s = ρZ/A` |
 
-The scattering channel (**RHMT-S**) runs on a 3-plane tracker (minimal — one fewer
+The scattering channel (**MDMT-S**) runs on a 3-plane tracker (minimal — one fewer
 plane than the baselines need) and a 4-plane tracker (matched to the baselines);
-the energy channel (**RHMT-E**) uses the 6-plane spectrometer. Baselines: PoCA,
+the energy channel (**MDMT-E**) uses the 6-plane spectrometer. Baselines: PoCA,
 ASR, and MLS-EM, each also run with the spectrometer's measured momentum (a
 control that isolates the momentum from the reconstruction).
 
@@ -43,7 +43,7 @@ tuned on the object.
 ## Layout
 
 ```
-RHMT/
+MDMT/
 ├── rhmt/                     the method (importable package)
 │   ├── field.py             VoxelField3D — 3-D voxel grid + column projection
 │   ├── contrast.py          4-plane REML scattering contrast + Student-t loss
@@ -58,9 +58,9 @@ RHMT/
 │       ├── asr_p.py         ASR + the spectrometer's measured momentum (control)
 │       ├── poca_p.py        PoCA + the spectrometer's measured momentum (control)
 │       ├── mlsem_p.py       MLS-EM + the spectrometer's measured momentum (control)
-│       ├── rht_3p.py        RHMT-S on 3 planes (bottom plane dropped)
-│       ├── rht_s.py         RHMT-S  (4-plane scattering → λ)
-│       └── rht_6p.py        RHMT-E (energy → s) from the 6-plane spectrometer
+│       ├── rht_3p.py        MDMT-S on 3 planes (bottom plane dropped)
+│       ├── rht_s.py         MDMT-S  (4-plane scattering → λ)
+│       └── rht_6p.py        MDMT-E (energy → s) from the 6-plane spectrometer
 ├── experiments/             run_cell.py · matrix.py · dispatch.py (multi-GPU) ·
 │                            metrics.py (AUC) · robustness.py + robust_table.py
 ├── cal/                     cached blank-scan calibration (per method × background)
@@ -79,8 +79,8 @@ RHMT/
 
 ```
 hits .npz ──► per-muon fit          ──► 3-D voxel field          ──► column map ──► AUC
-(data/)      RHMT-S: REML contrast       penalised MLE on a grid      (top-down)     (metrics.py,
-             RHMT-E: GLS momentum fit    (VoxelField3D) + TV prior                    truth only here)
+(data/)      MDMT-S: REML contrast       penalised MLE on a grid      (top-down)     (metrics.py,
+             MDMT-E: GLS momentum fit    (VoxelField3D) + TV prior                    truth only here)
 ```
 
 ## How to modify

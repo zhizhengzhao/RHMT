@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 
 from experiments.matrix import CAPS
-from rhmt.scenes import MAT, truth_mask
+from mdmt.scenes import MAT, truth_mask
 
 ROWS = [
     ("MLS-EM",          "mlsem",  "img",     "inv_x0"),
@@ -15,17 +15,17 @@ ROWS = [
     ("MLS-EM + momentum (6-plane)", "mlsem_p", "img", "inv_x0"),
     ("PoCA + momentum (6-plane)", "poca_p", "img", "inv_x0"),
     ("ASR + momentum (6-plane)", "asr_p", "img", "inv_x0"),
-    ("RHMT-S (3-plane)", "rht_3p", "img",     "inv_x0"),
-    ("RHMT-S (4-plane)", "rht_s",  "img",     "inv_x0"),
-    ("RHMT-E (6-plane)", "rht_6p", "img_s",   "s"),
+    ("MDMT-S (3-plane)", "rht_3p", "img",     "inv_x0"),
+    ("MDMT-S (4-plane)", "rht_s",  "img",     "inv_x0"),
+    ("MDMT-E (6-plane)", "rht_6p", "img_s",   "s"),
 ]
 LABELS = [r[0] for r in ROWS]
 GROUPS = [("Baselines (4-plane tracker)", LABELS[:3]),
           ("Scattering baselines + momentum", LABELS[3:6]),
-          ("Ours\\,---\\,RHMT", LABELS[6:])]
+          ("Ours\\,---\\,MDMT", LABELS[6:])]
 # main-paper lineup: baselines + tracker scattering (3- and 4-plane) + energy
-MAIN = ["PoCA", "ASR", "MLS-EM", "RHMT-S (3-plane)", "RHMT-S (4-plane)", "RHMT-E (6-plane)"]
-MAIN_GROUPS = [("Baselines (4-plane tracker)", MAIN[:3]), ("Ours\\,---\\,RHMT", MAIN[3:])]
+MAIN = ["PoCA", "ASR", "MLS-EM", "MDMT-S (3-plane)", "MDMT-S (4-plane)", "MDMT-E (6-plane)"]
+MAIN_GROUPS = [("Baselines (4-plane tracker)", MAIN[:3]), ("Ours\\,---\\,MDMT", MAIN[3:])]
 MATS = ["pb", "water", "al"]    # display order: lead, water, aluminium
 BGS = ["sio2", "concrete"]
 

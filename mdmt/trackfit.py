@@ -2,7 +2,7 @@
 
 import torch
 
-from rhmt.physics import (arc_map, drift, fermi_eyges_cov,
+from mdmt.physics import (arc_map, drift, fermi_eyges_cov,
                           instrument_from_layers, scatter_regions)
 
 DEV = "cuda:1" if torch.cuda.is_available() else "cpu"

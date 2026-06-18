@@ -11,9 +11,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import numpy as np
 
-from rhmt import data
-from rhmt.methods import get
-from rhmt.scenes import SCENES
+from mdmt import data
+from mdmt.methods import get
+from mdmt.scenes import SCENES
 
 X0S = {"sio2": 122.9, "concrete": 115.3}
 SIGMA_POS = 0.05      # mm

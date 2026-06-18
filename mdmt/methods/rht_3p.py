@@ -1,10 +1,10 @@
-"""RHMT-S on a 3-plane tracker: the scattering method with the bottom plane dropped
+"""MDMT-S on a 3-plane tracker: the scattering method with the bottom plane dropped
 (2 planes above the sample, 1 below). Scattering is read from the displacement at the
 single exit plane rather than the in/out kink, so one contrast dimension instead of two."""
-from rhmt.methods.rht_s import RHMTScatter
+from mdmt.methods.rht_s import MDMTScatter
 
 
-class RHMTScatter3(RHMTScatter):
+class MDMTScatter3(MDMTScatter):
     name = "rht_3p"
     tier = "A"
 

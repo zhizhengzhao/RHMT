@@ -1,8 +1,8 @@
 """Scattering-tomography baselines: PoCA, ASR, MLS-EM."""
 import numpy as np
 
-from rhmt.inversion import grid_axes
-from rhmt.methods.base import Method
+from mdmt.inversion import grid_axes
+from mdmt.methods.base import Method
 
 HALF = 200.0
 

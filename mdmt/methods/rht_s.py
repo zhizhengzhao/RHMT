@@ -1,14 +1,14 @@
-"""RHMT-S: 4-plane scattering tomograph reconstructed as a penalised-MLE 3D voxel field."""
+"""MDMT-S: 4-plane scattering tomograph reconstructed as a penalised-MLE 3D voxel field."""
 import numpy as np
 import torch
 
-from rhmt.contrast import ScatterT
-from rhmt.field import HALF, VoxelField3D, column_eval, tv3d
-from rhmt.inversion import coverage, grid_axes
-from rhmt.methods.base import Method
+from mdmt.contrast import ScatterT
+from mdmt.field import HALF, VoxelField3D, column_eval, tv3d
+from mdmt.inversion import coverage, grid_axes
+from mdmt.methods.base import Method
 
 
-class RHMTScatter(Method):
+class MDMTScatter(Method):
     name = "rht_s"
     tier = "A"
 

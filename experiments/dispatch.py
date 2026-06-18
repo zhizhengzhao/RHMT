@@ -13,7 +13,7 @@ _here = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _here)
 sys.path.insert(0, os.path.dirname(_here))
 from matrix import cells
-from rhmt.scenes import SCENES
+from mdmt.scenes import SCENES
 
 
 def tag_of(job):

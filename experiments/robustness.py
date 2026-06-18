@@ -9,9 +9,9 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 
-from rhmt import data
-from rhmt.methods import get
-from rhmt.scenes import MAT, SCENES
+from mdmt import data
+from mdmt.methods import get
+from mdmt.scenes import MAT, SCENES
 from experiments.metrics import ROWS, roc_auc, MATS, BGS
 from experiments.run_cell import SCORE, X0S
 

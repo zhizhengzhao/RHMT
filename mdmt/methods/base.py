@@ -1,4 +1,4 @@
-"""Base class for RHMT reconstruction methods."""
+"""Base class for MDMT reconstruction methods."""
 
 
 class Method:

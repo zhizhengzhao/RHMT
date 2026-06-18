@@ -1,7 +1,7 @@
 """Closed-form Fermi-Eyges lever-moment integrals of the background scattering budget."""
 import numpy as np
 
-from rhmt.physics import scatter_regions
+from mdmt.physics import scatter_regions
 
 
 def region_moment_matrix(ins, x0_rpc_eff=140.0, x0_sample=None):

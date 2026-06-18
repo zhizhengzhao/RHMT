@@ -2,11 +2,11 @@
 four planes, the per-muon scattering angle normalised by the measured p*beta."""
 import numpy as np
 
-from rhmt.inversion import grid_axes
-from rhmt.methods.base import Method
-from rhmt.methods.baselines import HALF, derived, grid_index, img_from_stat
-from rhmt.physics import MU
-from rhmt.trackfit import fit_free
+from mdmt.inversion import grid_axes
+from mdmt.methods.base import Method
+from mdmt.methods.baselines import HALF, derived, grid_index, img_from_stat
+from mdmt.physics import MU
+from mdmt.trackfit import fit_free
 
 
 class ASRMomentum(Method):

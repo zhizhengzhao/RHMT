@@ -1,9 +1,9 @@
-"""4-plane REML scattering contrast and its Student-t likelihood (RHMT-S)."""
+"""4-plane REML scattering contrast and its Student-t likelihood (MDMT-S)."""
 import numpy as np
 import torch
 
-from rhmt.physics import ES, instrument_from_layers
-from rhmt.contrast_moments import region_moment_matrix
+from mdmt.physics import ES, instrument_from_layers
+from mdmt.contrast_moments import region_moment_matrix
 
 DEV = "cuda:2" if torch.cuda.is_available() else "cpu"
 

@@ -1,4 +1,4 @@
-"""Blank-scan flat-field calibration for the RHMT-E energy channel."""
+"""Blank-scan flat-field calibration for the MDMT-E energy channel."""
 import numpy as np
 import torch
 
