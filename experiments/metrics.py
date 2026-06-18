@@ -12,6 +12,8 @@ ROWS = [
     ("MLS-EM",          "mlsem",  "img",     "inv_x0"),
     ("PoCA",            "poca",   "img",     "inv_x0"),
     ("ASR",             "asr",    "img",     "inv_x0"),
+    ("MLS-EM + momentum (6-plane)", "mlsem_p", "img", "inv_x0"),
+    ("PoCA + momentum (6-plane)", "poca_p", "img", "inv_x0"),
     ("ASR + momentum (6-plane)", "asr_p", "img", "inv_x0"),
     ("RHMT-S (3-plane)", "rht_3p", "img",     "inv_x0"),
     ("RHMT-S (4-plane)", "rht_s",  "img",     "inv_x0"),
@@ -19,8 +21,8 @@ ROWS = [
 ]
 LABELS = [r[0] for r in ROWS]
 GROUPS = [("Baselines (4-plane tracker)", LABELS[:3]),
-          ("Scattering baseline + momentum", LABELS[3:4]),
-          ("Ours\\,---\\,RHMT", LABELS[4:])]
+          ("Scattering baselines + momentum", LABELS[3:6]),
+          ("Ours\\,---\\,RHMT", LABELS[6:])]
 # main-paper lineup: baselines + tracker scattering (3- and 4-plane) + energy
 MAIN = ["PoCA", "ASR", "MLS-EM", "RHMT-S (3-plane)", "RHMT-S (4-plane)", "RHMT-E (6-plane)"]
 MAIN_GROUPS = [("Baselines (4-plane tracker)", MAIN[:3]), ("Ours\\,---\\,RHMT", MAIN[3:])]

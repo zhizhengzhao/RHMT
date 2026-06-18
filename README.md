@@ -11,8 +11,8 @@ reconstructed in two channels:
 The scattering channel (**RHMT-S**) runs on a 3-plane tracker (minimal — one fewer
 plane than the baselines need) and a 4-plane tracker (matched to the baselines);
 the energy channel (**RHMT-E**) uses the 6-plane spectrometer. Baselines: PoCA,
-ASR, MLS-EM, and ASR given the spectrometer's measured momentum (a control that
-isolates the momentum from the reconstruction).
+ASR, and MLS-EM, each also run with the spectrometer's measured momentum (a
+control that isolates the momentum from the reconstruction).
 
 ## Reproduce
 
@@ -56,6 +56,8 @@ RHMT/
 │   └── methods/             plugins (base.py + registry in __init__.py)
 │       ├── baselines.py     PoCA, ASR, MLS-EM (4-plane tracker)
 │       ├── asr_p.py         ASR + the spectrometer's measured momentum (control)
+│       ├── poca_p.py        PoCA + the spectrometer's measured momentum (control)
+│       ├── mlsem_p.py       MLS-EM + the spectrometer's measured momentum (control)
 │       ├── rht_3p.py        RHMT-S on 3 planes (bottom plane dropped)
 │       ├── rht_s.py         RHMT-S  (4-plane scattering → λ)
 │       └── rht_6p.py        RHMT-E (energy → s) from the 6-plane spectrometer
