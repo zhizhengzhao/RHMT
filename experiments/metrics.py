@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 
 from experiments.matrix import CAPS
-from mdmt.scenes import MAT, truth_mask
+from namt.scenes import MAT, truth_mask
 
 ROWS = [
     ("MLS-EM",               "mlsem",   "img",   "inv_x0"),
@@ -15,18 +15,18 @@ ROWS = [
     ("MLS-EM (measured p)",  "mlsem_p", "img",   "inv_x0"),
     ("PoCA (measured p)",    "poca_p",  "img",   "inv_x0"),
     ("ASR (measured p)",     "asr_p",   "img",   "inv_x0"),
-    ("MDMT-S (3-plane)",     "rht_3p",  "img",   "inv_x0"),
-    ("MDMT-S (4-plane)",     "rht_s",   "img",   "inv_x0"),
+    ("NAMT-S (3-plane)",     "rht_3p",  "img",   "inv_x0"),
+    ("NAMT-S (4-plane)",     "rht_s",   "img",   "inv_x0"),
     ("Energy-loss statistic", "eloss",  "img",   "s"),
-    ("MDMT-E",               "rht_6p",  "img_s", "s"),
+    ("NAMT-E",               "rht_6p",  "img_s", "s"),
 ]
 LABELS = [r[0] for r in ROWS]
 GROUPS = [("Baselines (tracker)", LABELS[:3]),
           ("Scattering baselines with measured momentum", LABELS[3:6]),
-          ("MDMT-S (tracker)", LABELS[6:8]),
+          ("NAMT-S (tracker)", LABELS[6:8]),
           ("Energy channel", LABELS[8:])]
-MAIN = ["PoCA", "ASR", "MLS-EM", "MDMT-S (3-plane)", "MDMT-S (4-plane)", "MDMT-E"]
-MAIN_GROUPS = [("Baselines (tracker)", MAIN[:3]), ("MDMT", MAIN[3:])]
+MAIN = ["PoCA", "ASR", "MLS-EM", "NAMT-S (3-plane)", "NAMT-S (4-plane)", "NAMT-E"]
+MAIN_GROUPS = [("Baselines (tracker)", MAIN[:3]), ("NAMT", MAIN[3:])]
 MATS = ["pb", "water", "al"]    # display order: lead, water, aluminium
 BGS = ["sio2", "concrete"]
 

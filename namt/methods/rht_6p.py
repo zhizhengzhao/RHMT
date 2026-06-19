@@ -1,17 +1,17 @@
-"""MDMT-E: stopping-power field s = rho Z/A from the momentum loss of muons
+"""NAMT-E: stopping-power field s = rho Z/A from the momentum loss of muons
 crossing the 6-plane magnetic spectrometer."""
 import numpy as np
 import torch
 
-from mdmt.calib import flat_lookup, lam_table
-from mdmt.field import HALF, VoxelField3D, column_eval, tv3d
-from mdmt.inversion import coverage, grid_axes, huber
-from mdmt.methods.base import Method
-from mdmt.physics import MU, bethe_dedx
-from mdmt.trackfit import fit_free
+from namt.calib import flat_lookup, lam_table
+from namt.field import HALF, VoxelField3D, column_eval, tv3d
+from namt.inversion import coverage, grid_axes, huber
+from namt.methods.base import Method
+from namt.physics import MU, bethe_dedx
+from namt.trackfit import fit_free
 
 
-class MDMTSpectro(Method):
+class NAMTSpectro(Method):
     name = "rht_6p"
     tier = "B"
 

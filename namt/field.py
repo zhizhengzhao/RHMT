@@ -1,4 +1,4 @@
-"""3-D voxel field for MDMT reconstruction."""
+"""3-D voxel field for NAMT reconstruction."""
 import numpy as np
 import torch
 import torch.nn as nn

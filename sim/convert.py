@@ -1,4 +1,4 @@
-"""MDMT converter: ROOT -> NPZ keeping raw RPC crossings on ALL planes (any count).
+"""NAMT converter: ROOT -> NPZ keeping raw RPC crossings on ALL planes (any count).
 
 Per event: hits (N,nlay,2) = muon crossing (x,y) per plane, nhit, src_p4 (TRUTH,
 eval-only, never a method input), layer_z. Works for the 4-layer (tier A) and

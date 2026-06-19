@@ -7,11 +7,11 @@ measured momentum but no blank calibration.
 """
 import numpy as np
 
-from mdmt.field import HALF
-from mdmt.inversion import grid_axes
-from mdmt.methods.base import Method
-from mdmt.physics import MU
-from mdmt.trackfit import fit_free
+from namt.field import HALF
+from namt.inversion import grid_axes
+from namt.methods.base import Method
+from namt.physics import MU
+from namt.trackfit import fit_free
 
 
 def _grid_index(xy, vox):

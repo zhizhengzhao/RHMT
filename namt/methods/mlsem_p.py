@@ -3,11 +3,11 @@ the inner four planes, with the per-muon scattering covariance scaled by the
 measured 1/(p*beta)^2."""
 import numpy as np
 
-from mdmt.inversion import grid_axes
-from mdmt.methods.base import Method
-from mdmt.methods.baselines import HALF, mlsem_full_img
-from mdmt.physics import MU
-from mdmt.trackfit import fit_free
+from namt.inversion import grid_axes
+from namt.methods.base import Method
+from namt.methods.baselines import HALF, mlsem_full_img
+from namt.physics import MU
+from namt.trackfit import fit_free
 
 
 class MLSEMMomentum(Method):

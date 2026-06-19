@@ -1,15 +1,15 @@
-# MDMT — Measurement-Domain Muon Tomography
+# NAMT — Nuisance-Aware Muon Tomography
 
 Cosmic-muon material tomography posed directly on the detector hits (the
 measurement domain). The same hits are reconstructed in two channels:
 
 | channel | instrument (tier) | observable | output field |
 |---|---|---|---|
-| **MDMT-S** (scattering) | 4 RPC planes, no magnets (**A**) | spread of the hits about the straight track | radiation length `λ = 1/X₀` |
-| **MDMT-E** (energy) | 6 RPC planes + 2×3 T magnets (**B**) | momentum loss from the magnetic bend (Bethe–Bloch line integral) | stopping power `s = ρZ/A` |
+| **NAMT-S** (scattering) | 4 RPC planes, no magnets (**A**) | spread of the hits about the straight track | radiation length `λ = 1/X₀` |
+| **NAMT-E** (energy) | 6 RPC planes + 2×3 T magnets (**B**) | momentum loss from the magnetic bend (Bethe–Bloch line integral) | stopping power `s = ρZ/A` |
 
-MDMT-S runs on a 3-plane tracker (one fewer plane than the baselines need) and a
-4-plane tracker; MDMT-E uses the 6-plane spectrometer. Baselines: PoCA, ASR, and
+NAMT-S runs on a 3-plane tracker (one fewer plane than the baselines need) and a
+4-plane tracker; NAMT-E uses the 6-plane spectrometer. Baselines: PoCA, ASR, and
 MLS-EM, each also run with the spectrometer's measured momentum; and an
 energy-loss statistic (per-muon momentum-corrected loss binned by per-column
 median, no calibration) as a derived-observable baseline for the energy channel.
@@ -50,7 +50,7 @@ entries use `min_cov=10`.
 
 ```
 .
-├── mdmt/                     the method (importable package)
+├── namt/                     the method (importable package)
 │   ├── field.py             VoxelField3D — 3-D voxel grid + column projection
 │   ├── contrast.py          4-plane REML scattering contrast + Student-t loss
 │   ├── physics.py           single-muon transport, Bethe–Bloch, Fermi–Eyges
@@ -65,9 +65,9 @@ entries use `min_cov=10`.
 │       ├── poca_p.py        PoCA with the spectrometer's measured momentum
 │       ├── mlsem_p.py       MLS-EM with the spectrometer's measured momentum
 │       ├── eloss.py         energy-loss statistic (energy-channel baseline)
-│       ├── rht_3p.py        MDMT-S on 3 planes (bottom plane dropped)
-│       ├── rht_s.py         MDMT-S  (4-plane scattering → λ)
-│       └── rht_6p.py        MDMT-E (energy → s) from the 6-plane spectrometer
+│       ├── rht_3p.py        NAMT-S on 3 planes (bottom plane dropped)
+│       ├── rht_s.py         NAMT-S  (4-plane scattering → λ)
+│       └── rht_6p.py        NAMT-E (energy → s) from the 6-plane spectrometer
 ├── experiments/             run_cell.py · matrix.py · dispatch.py (multi-GPU) ·
 │                            metrics.py (AUC) · robustness.py + robust_table.py
 ├── cal/                     cached blank-scan calibration (per method × background)
@@ -86,17 +86,17 @@ entries use `min_cov=10`.
 
 ```
 hits .npz ──► per-muon fit          ──► 3-D voxel field          ──► column map ──► AUC
-(data/)      MDMT-S: REML contrast       penalised MLE on a grid      (top-down)     (metrics.py,
-             MDMT-E: momentum fit        (VoxelField3D) + TV prior                    truth only here)
+(data/)      NAMT-S: REML contrast       penalised MLE on a grid      (top-down)     (metrics.py,
+             NAMT-E: momentum fit        (VoxelField3D) + TV prior                    truth only here)
 ```
 
 ## How to modify
 
-- **Add a method:** add `mdmt/methods/your_method.py` subclassing `Method`
+- **Add a method:** add `namt/methods/your_method.py` subclassing `Method`
   (`name`, `tier`, `calibrate()`, `reconstruct()`), import it in
-  `mdmt/methods/__init__.py`, add its `name` to `ALL_METHODS` in
+  `namt/methods/__init__.py`, add its `name` to `ALL_METHODS` in
   `experiments/matrix.py` and a row to `ROWS` in `experiments/metrics.py`.
-- **Add a scene / material:** edit `mdmt/scenes.py` (`SCENES`, `MAT`) and the
+- **Add a scene / material:** edit `namt/scenes.py` (`SCENES`, `MAT`) and the
   matching Geant4 config under `sim/`.
 - **Grid / exposure / priors:** `SCORE` in `run_cell.py` (grid), `CAPS` in
   `matrix.py` (exposures), or the `reconstruct()` keyword args.
